@@ -1,22 +1,28 @@
 package com.victorfish9.forum.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
+    @Column(name = "firstname", nullable = false)
+    private String firstname;
+    @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "role", nullable = false)
+    private String role;
 
-    public User(Long id, String username, String password) {
+    public User(String username, String password, String firstname, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.firstname = firstname;
+        this.role = role;
     }
 
     public User() {
@@ -44,5 +50,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

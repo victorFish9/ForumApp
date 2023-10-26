@@ -9,7 +9,11 @@
 <header th:insert="blocks/header :: header" ></header>
 <h2>Home page</h2>
 <div>
-    <p>Welcome <b sec:authentication="name"></b>, your role is <b sec:authentication="principal.authorities"></b></p>
+
+    <div sec:authorize="hasRole('USER')">This text for user role</div>
+    <div sec:authorize="isAuthenticated()">
+        Text for all users
+    </div>
 </div>
 <div class="wrapper">
     <form th:action="@{/logout}" method="post">

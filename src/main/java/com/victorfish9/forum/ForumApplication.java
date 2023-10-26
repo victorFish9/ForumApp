@@ -15,12 +15,14 @@ public class ForumApplication {
     private static final Logger log = LoggerFactory.getLogger(ForumApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ForumApplication.class, args);
+
     }
+
 /*
     @Bean
     public CommandLineRunner forumUload(UserRepository urepo){
         return (args -> {
-            User admin = new User((long) 2L, "user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6");
+            User admin = new User("user2", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "mikko", "USER");
 
             urepo.save(admin);
         });

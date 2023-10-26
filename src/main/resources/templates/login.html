@@ -7,6 +7,9 @@
     <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
+  Text for all users
+</div>
 <div>
   <div th:if="${param.error}">
     Invalid username or password.
