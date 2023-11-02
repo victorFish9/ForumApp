@@ -6,48 +6,37 @@ import com.victorfish9.forum.repository.PostRepository;
 import com.victorfish9.forum.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+
 
 @Controller
-public class MainController {
-
-    @Autowired
-    private PostRepository postRepository;
+public class PostController {
 
     @Autowired
     private UserRepository userRepository;
-    @GetMapping("/home")
-    public String home(Model model){
+    @Autowired
+    private PostRepository postRepository;
+
+    @RequestMapping("/home/add")
+    public String postAdd(Model model){
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
         User myUser = userRepository.findByUsername(username);
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
         model.addAttribute("myId", myUser.getId());
-        return "home";
+        model.addAttribute("post", new Post());
+        return "add";
     }
 
-
-    @GetMapping("/login")
-    public String login(){
-        return "login";
+    @RequestMapping(value = "/home/save", method = RequestMethod.POST)
+    public String postAddMethod(@ModelAttribute Post post){
+        postRepository.save(post);
+        return "redirect:/home";
     }
-
-
 }

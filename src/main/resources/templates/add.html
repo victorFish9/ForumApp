@@ -8,11 +8,14 @@
 <body>
 <header th:insert="blocks/header :: header" ></header>
     <h2>Create post</h2>
-    <form action="/home/add" method="post">
-        <input type="text" name="title" placeholder="Insert title name"/><br/>
-        <input type="text" name="author" placeholder="Insert author name"/><br/>
-        <input type="date" name="date" placeholder="Insert date name"/><br/>
-        <textarea name="description" placeholder="Insert description"></textarea><br/>
+    <form th:object="${post}" th:action="@{save}" action="#" method="post">
+        <input type="text" th:field="*{title}" placeholder="Insert title name"/><br/>
+        <input type="text" th:field="*{author}" placeholder="Insert author name"/><br/>
+        <input type="date" th:field="*{date}" placeholder="Insert date name"/><br/>
+        <textarea name="description" th:field="*{description}" placeholder="Insert description"></textarea><br/>
+        <div >
+        <input type="hidden" id="user" name="user" th:attr="value=${myId}" />
+        </div>
         <button type="submit">Create post</button>
     </form>
 <footer th:insert="blocks/footer :: footer"></footer>

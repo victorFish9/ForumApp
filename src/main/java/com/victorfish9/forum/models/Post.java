@@ -1,5 +1,6 @@
 package com.victorfish9.forum.models;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -11,6 +12,8 @@ public class Post {
     private String title;
     private String author;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date")
     private Date date;
 
     @ManyToOne

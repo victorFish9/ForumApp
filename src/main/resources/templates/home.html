@@ -9,19 +9,16 @@
 <header th:insert="blocks/header :: header" ></header>
 <h2>Home page</h2>
 <div>
-
-    <div sec:authorize="hasRole('USER')">This text for user role</div>
-    <div sec:authorize="isAuthenticated()">
-        Text for all users
-    </div>
+    <p>Your id is <span th:text="${myId}"></span></p>
 </div>
 <div class="wrapper">
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="sign out">
     </form>
+    <h2>Posts</h2>
 <div th:each="x : ${posts}">
     <h3 th:text="${x.title}"></h3>
-    <p th:text="${x.date}"></p>
+    <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
     <p th:text="${x.user.username}"></p>
     <a>Read more</a>
 </div>

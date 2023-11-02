@@ -1,6 +1,9 @@
 package com.victorfish9.forum.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,6 +19,10 @@ public class User {
     private String password;
     @Column(name = "role", nullable = false)
     private String role;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
     public User(String username, String password, String firstname, String role) {
         this.id = id;
@@ -66,5 +73,18 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    @Override
+    public String toString(){
+        return "Id [id=" + id + ", name= " + firstname + "]";
     }
 }
