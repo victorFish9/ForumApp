@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -26,9 +28,16 @@ public class PostController {
 
     @RequestMapping("/home/add")
     public String postAdd(Model model){
+        //User methods for getting current user_id
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
         User myUser = userRepository.findByUsername(username);
+        //Date methods for getting current date
+        DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("Date:" + dft.format(now));
+
+        model.addAttribute("current_date", dft.format(now));
         model.addAttribute("myId", myUser.getId());
         model.addAttribute("post", new Post());
         return "add";
