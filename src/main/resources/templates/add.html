@@ -10,9 +10,9 @@
     <h2>Create post</h2>
     <form th:object="${post}" th:action="@{save}" action="#" method="post">
         <input type="text" th:field="*{title}" placeholder="Insert title name"/><br/>
-        <input type="text" th:field="*{author}" placeholder="Insert author name"/><br/>
+       <!-- <input type="text" th:field="*{author}" placeholder="Insert author name"/><br/> -->
         <input type="date" id="date" name="date" th:attr="value=${current_date}" placeholder="Insert date name" readonly="readonly"/><br/>
-        <textarea name="description" th:field="*{description}" placeholder="Insert description"></textarea><br/>
+        <textarea name="description" th:field="*{description}" maxlength="500" placeholder="Insert description"></textarea><br/>
         <div >
         <input type="hidden" id="user" name="user" th:attr="value=${myId}" />
         </div>

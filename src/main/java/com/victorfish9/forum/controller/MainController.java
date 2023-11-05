@@ -12,9 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -34,12 +32,7 @@ public class MainController {
     private UserRepository userRepository;
     @GetMapping("/home")
     public String home(Model model){
-        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = user.getUsername();
-        User myUser = userRepository.findByUsername(username);
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
-        model.addAttribute("myId", myUser.getId());
+
         return "home";
     }
 

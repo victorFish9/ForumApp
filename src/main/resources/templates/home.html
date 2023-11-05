@@ -8,6 +8,7 @@
 <body>
 <header th:insert="blocks/header :: header" ></header>
 <h2>Home page</h2>
+<!--
 <div>
     <p>Your id is <span th:text="${myId}"></span></p>
 </div>
@@ -21,8 +22,14 @@
     <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
     <p th:text="${x.user.username}"></p>
     <a>Read more</a>
+
+    <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/delete/{id}(id=${x.id})}">Delete</a></p>
+    <p th:unless="${x.user.id == myId}">You cant delete</p>
 </div>
 </div>
+<div th:each="y : ${posts}">
+    <p th:text="${y.user.id}"></p>
+</div>-->
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>

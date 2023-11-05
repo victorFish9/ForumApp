@@ -10,7 +10,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private String author;
+    //private String author;
+    @Column(name = "description", length = 500)
     private String description;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")
@@ -22,10 +23,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String author, Date date, String description, User user) {
+    public Post(String title, /*String author,*/ Date date, String description, User user) {
 
         this.title = title;
-        this.author = author;
+        //this.author = author;
         this.date = date;
         this.description = description;
         this.user = user;
@@ -54,7 +55,7 @@ public class Post {
     public void setTitle(String title) {
         this.title = title;
     }
-
+/*
     public String getAuthor() {
         return author;
     }
@@ -62,7 +63,7 @@ public class Post {
     public void setAuthor(String author) {
         this.author = author;
     }
-
+*/
     public Date getDate() {
         return date;
     }
@@ -79,4 +80,15 @@ public class Post {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+               // ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", user=" + user +
+                '}';
+    }
 }

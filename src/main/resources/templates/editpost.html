@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Edit</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h2>Edit your post</h2>
+<form th:object="${post}" th:action="@{/home/save}" action="#" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Title</label>
+    <input type="text" th:field="*{title}" />
+    <label>Description</label>
+    <textarea name="description" th:field="*{description}"></textarea>
+    <label>Date</label>
+    <input type="date" id="date" name="date" th:attr="value=${current_date}" readonly="readonly" />
+
+    <input type="hidden" id="user" name="user" th:field="*{user.id}" />
+    <input type="submit" value="Save" />
+</form>
+</body>
+</html>
