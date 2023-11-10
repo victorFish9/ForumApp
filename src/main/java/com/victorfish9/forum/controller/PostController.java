@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -54,10 +51,14 @@ public class PostController {
 
     @RequestMapping(value = "/feed")
     public String postFeed(Model model){
+        //Getting user ID
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
         User myUser = userRepository.findByUsername(username);
-        Iterable<Post> posts = postRepository.findAll();
+        //Sorting posts from newest to oldest
+        List<Post> posts = (List<Post>) postRepository.findAll();
+        Collections.sort(posts, Collections.reverseOrder(Comparator.comparing(Post::getDate)));
+
         model.addAttribute("posts", posts);
         model.addAttribute("myId", myUser.getId());
         return "feed";
@@ -103,6 +104,17 @@ public class PostController {
         user.ifPresent(res :: add);
         model.addAttribute("users", res);
         return "userDetail";
+    }
+
+    //REST services
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    public @ResponseBody List<Post> postsListRest(){
+        return (List<Post>) postRepository.findAll();
+    }
+
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Post> postListRest(@PathVariable("id") Long id){
+        return postRepository.findById(id);
     }
 
 

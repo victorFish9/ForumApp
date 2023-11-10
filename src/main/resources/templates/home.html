@@ -6,30 +6,16 @@
     <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-<header th:insert="blocks/header :: header" ></header>
-<h2>Home page</h2>
-<!--
-<div>
-    <p>Your id is <span th:text="${myId}"></span></p>
-</div>
-<div class="wrapper">
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="sign out">
-    </form>
-    <h2>Posts</h2>
-<div th:each="x : ${posts}">
-    <h3 th:text="${x.title}"></h3>
-    <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
-    <p th:text="${x.user.username}"></p>
-    <a>Read more</a>
+    <header th:insert="blocks/header :: header" ></header>
+    <h2>Home page</h2>
+    <main>
+    <div th:each="x : ${latestPosts}" class="card">
+        <h3 th:text="${x.title}"></h3>
+        <p th:text="${x.date}"></p>
+        <p>Author: <span th:text="${x.user.username}"></span></p>
+    </div>
+    </main>
 
-    <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/delete/{id}(id=${x.id})}">Delete</a></p>
-    <p th:unless="${x.user.id == myId}">You cant delete</p>
-</div>
-</div>
-<div th:each="y : ${posts}">
-    <p th:text="${y.user.id}"></p>
-</div>-->
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>

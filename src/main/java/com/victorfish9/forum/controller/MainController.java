@@ -32,7 +32,9 @@ public class MainController {
     private UserRepository userRepository;
     @GetMapping("/home")
     public String home(Model model){
-
+        List<Post> allPosts = (List<Post>) postRepository.findAll();
+        List<Post> latestPosts = allPosts.subList(Math.max(0, allPosts.size() - 3), allPosts.size());
+        model.addAttribute("latestPosts", latestPosts);
         return "home";
     }
 

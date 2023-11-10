@@ -11,12 +11,10 @@
 <div>
   <p>Your id is <span th:text="${myId}"></span></p>
 </div>
-<div class="wrapper">
-  <form th:action="@{/logout}" method="post">
-    <input type="submit" value="sign out">
-  </form>
-  <h2>Posts</h2>
-  <div th:each="x : ${posts}">
+
+<h2>Posts</h2>
+<main class="main_feed">
+  <div th:each="x : ${posts}" class="card">
     <h3 th:text="${x.title}"></h3>
     <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
     <p th:text="${x.user.username}"></p>
@@ -28,7 +26,9 @@
     <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/edit/{id}(id=${x.id})}">Edit</a></p>
     <p th:unless="${x.user.id == myId or myId == 1}">You cant edit</p>
   </div>
-</div>
+
+</main>
+
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
