@@ -1,18 +1,20 @@
 package com.victorfish9.forum;
 
-import com.victorfish9.forum.models.User;
-import com.victorfish9.forum.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class ForumApplication {
+public class ForumApplication extends SpringBootServletInitializer {
 
-    private static final Logger log = LoggerFactory.getLogger(ForumApplication.class);
+    //private static final Logger log = LoggerFactory.getLogger(ForumApplication.class);
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
+        return application.sources(ForumApplication.class);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(ForumApplication.class, args);
 

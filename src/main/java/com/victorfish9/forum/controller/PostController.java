@@ -106,16 +106,7 @@ public class PostController {
         return "userDetail";
     }
 
-    //REST services
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    public @ResponseBody List<Post> postsListRest(){
-        return (List<Post>) postRepository.findAll();
-    }
 
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Post> postListRest(@PathVariable("id") Long id){
-        return postRepository.findById(id);
-    }
 
 
 }
