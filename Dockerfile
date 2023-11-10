@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/Forum.war Forum.war
+COPY --from=build /target/Forum.jar Forum.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-war", "Forum.war"]
+ENTRYPOINT ["java", "-jar", "Forum.jar"]
