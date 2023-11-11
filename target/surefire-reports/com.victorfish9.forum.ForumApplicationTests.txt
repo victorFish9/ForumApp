@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.victorfish9.forum.ForumApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.374 s - in com.victorfish9.forum.ForumApplicationTests

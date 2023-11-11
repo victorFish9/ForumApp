@@ -1,0 +1,14 @@
+com/victorfish9/forum/models/SignUpForm.class
+com/victorfish9/forum/controller/RestController.class
+com/victorfish9/forum/repository/PostRepository.class
+com/victorfish9/forum/controller/SingUpController.class
+com/victorfish9/forum/war/ServletInitializer.class
+com/victorfish9/forum/controller/PostController.class
+com/victorfish9/forum/controller/MainController.class
+com/victorfish9/forum/ForumApplication.class
+com/victorfish9/forum/models/Post.class
+com/victorfish9/forum/WebSecurityConfig.class
+com/victorfish9/forum/models/User.class
+com/victorfish9/forum/controller/UserDetailService.class
+com/victorfish9/forum/repository/UserRepository.class
+com/victorfish9/forum/config/WebMvcConfig.class

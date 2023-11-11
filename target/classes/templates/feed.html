@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>feed</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header th:insert="blocks/header :: header" ></header>
+  <h2>Welcome to feed page</h2>
+<div>
+  <p>Your id is <span th:text="${myId}"></span></p>
+</div>
+
+<h2>Posts</h2>
+<main class="main_feed">
+  <div th:each="x : ${posts}" class="card">
+    <h3 th:text="${x.title}"></h3>
+    <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
+    <p th:text="${x.user.username}"></p>
+    <a th:href="@{/show/{id}(id=${x.id})}" >Read more</a>
+
+    <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/delete/{id}(id=${x.id})}">Delete</a></p>
+    <p th:unless="${x.user.id == myId or myId == 1}">You cant delete</p>
+
+    <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/edit/{id}(id=${x.id})}">Edit</a></p>
+    <p th:unless="${x.user.id == myId or myId == 1}">You cant edit</p>
+  </div>
+
+</main>
+
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

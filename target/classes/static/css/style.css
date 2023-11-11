@@ -1,0 +1,98 @@
+body, html{
+    margin: 10px;
+    padding: 15px;
+
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer{
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar nav{
+    display: flex;
+    align-items: center;
+}
+.navbar a {
+    padding: 10px;
+}
+
+main{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_feed{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 190px;
+    height: 254px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+    -15px -15px 30px #ffffff;
+    padding: 10px;
+    margin: 30px;
+}
+.card h3 p{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.button1, .button2 {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    color: #111827;
+
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .45rem 1rem;
+    text-align: center;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.button2:hover {
+    background-color: #de7b7b;
+}
+.button1:hover {
+    background-color: #3db22e;
+}
+
+.button1:focus, .button2:focus {
+    outline: 2px solid rgba(0,0,0,0.1);
+    outline-offset: 2px;
+}
+
+.button1:focus-visible, .button2:focus-visible {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+

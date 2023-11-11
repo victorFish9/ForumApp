@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header th:insert="blocks/header :: header" ></header>
+    <h2>Home page</h2>
+    <main>
+    <div th:each="x : ${latestPosts}" class="card">
+        <h3 th:text="${x.title}"></h3>
+        <p th:text="${x.date}"></p>
+        <p>Author: <span th:text="${x.user.username}"></span></p>
+    </div>
+    </main>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
