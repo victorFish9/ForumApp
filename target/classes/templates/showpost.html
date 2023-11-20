@@ -7,11 +7,12 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header" ></header>
-<div th:each="x : ${post}">
+<div th:each="x : ${post}" class="post">
     <h2 th:text="${x.title}" ></h2>
     <p th:text="${x.description}"></p>
     <p>Author: <a th:text="${x.user.username}" th:href="@{/user/{id}(id=${x.user.id})}"></a></p>
     <p>Publish date: <span th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></span></p>
+    <footer th:insert="blocks/footer :: footer"></footer>
 </div>
 </body>
 </html>

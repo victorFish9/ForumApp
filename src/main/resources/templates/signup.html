@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
 
-<h2>Sign up</h2>
+<h2 style="text-align: center">Sign up</h2>
+<div class="myForm">
 <form th:action="@{/signup}" th:object="${signupform}" action="#" method="post">
-    <label for="username">Username: </label>
-    <input type="text" id="username" name="username" th:field="*{username}" required />
+    <div class="inputGroup">
+    <input type="text" id="username" name="username" th:field="*{username}" required placeholder="Username"/>
+    </div>
     <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" >Username error</p>
-    <br>
-    <label for="firstname">First name: </label>
-    <input type="text" id="firstname" name="firstname" th:field="*{firstname}"required />
-    <br>
-    <label for="password">Password: </label>
-    <input type="text" id="password" name="password" th:field="*{password}"required />
+
+    <div class="inputGroup">
+    <input type="text" id="firstname" name="firstname" th:field="*{firstname}"required placeholder="First name"/>
+    </div>
+    <div class="inputGroup">
+    <input type="password" id="password" name="password" th:field="*{password}"required placeholder="Password"/>
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" >Password error</p>
-    <br>
-    <label for="password">Password Repeat: </label>
-    <input type="text" id="passwordRepeat" name="password" th:field="*{passwordRepeat}"required />
+</div>
+    <div class="inputGroup">
+    <input type="password" id="passwordRepeat" name="password" th:field="*{passwordRepeat}"required placeholder="Repeat password"/>
     <p th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}" >Password error</p>
-    <br>
-    <input type="submit" value="Signup"/>
+</div>
+    <div class="divButton">
+    <button type="submit" class="button1">Sign up</button>
+    </div>
 </form>
+</div>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>

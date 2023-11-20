@@ -7,28 +7,34 @@
     <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
-  Text for all users
-</div>
+<h2 style="text-align: center">Login</h2>
 <div>
-  <div th:if="${param.error}">
-    Invalid username or password.
-  </div>
-  <div th:if="${param.logout}">
-    You have been logged out.
-  </div>
+
+  <div class="myForm">
+
   <form th:action="@{/login}" method="post">
-    <div>
-      <label>User name: <input type="text" name="username" /></label>
+    <div th:if="${param.error}">
+      Invalid username or password.
     </div>
-    <div>
-      <label>Password: <input type="password" name="password" /></label>
+    <div th:if="${param.logout}">
+      You have been logged out.
+    </div>
+    <div class="inputGroup">
+      <input type="text" name="username" placeholder="Username"/>
+    </div>
+    <div class="inputGroup">
+     <input type="password" name="password" placeholder="Password"/>
     </div>
     <div>
       <button type="submit" class="button1">Log in</button>
     </div>
   </form>
-  <a th:href="@{/signup}">Sign up</a>
+
+  </div>
+  <a th:href="@{/signup}" class="button1">Sign up</a><!--
+  TOOD change a tag to button tag
+
+  -->
 </div>
 </body>
 </html>

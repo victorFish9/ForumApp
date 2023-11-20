@@ -8,11 +8,18 @@
 <body>
     <header th:insert="blocks/header :: header" ></header>
     <h2>Home page</h2>
+    <h2 style="text-align: center">Latest Articles</h2>
     <main>
     <div th:each="x : ${latestPosts}" class="card">
         <h3 th:text="${x.title}"></h3>
         <p th:text="${x.date}"></p>
         <p>Author: <span th:text="${x.user.username}"></span></p>
+        <a th:href="@{/show/{id}(id=${x.id})}" >Read more</a>
+        <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/delete/{id}(id=${x.id})}">Delete</a></p>
+        <p th:unless="${x.user.id == myId or myId == 1}">You cant delete</p>
+
+        <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/edit/{id}(id=${x.id})}">Edit</a></p>
+        <p th:unless="${x.user.id == myId or myId == 1}">You cant edit</p>
     </div>
     </main>
 

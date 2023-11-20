@@ -16,11 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import java.util.Date;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -34,6 +30,14 @@ public class MainController {
     public String home(Model model){
         List<Post> allPosts = (List<Post>) postRepository.findAll();
         List<Post> latestPosts = allPosts.subList(Math.max(0, allPosts.size() - 3), allPosts.size());
+        Collections.sort(latestPosts, Collections.reverseOrder(Comparator.comparing(Post::getDate)));
+
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        User myUser = userRepository.findByUsername(username);
+
+        model.addAttribute("myId", myUser.getId());
+        model.addAttribute("myUser", myUser.getUsername());
         model.addAttribute("latestPosts", latestPosts);
         return "home";
     }

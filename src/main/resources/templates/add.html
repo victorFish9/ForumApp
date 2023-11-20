@@ -7,17 +7,23 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header" ></header>
-    <h2>Create post</h2>
-    <form th:object="${post}" th:action="@{save}" action="#" method="post">
-        <input type="text" th:field="*{title}" placeholder="Insert title name"/><br/>
-       <!-- <input type="text" th:field="*{author}" placeholder="Insert author name"/><br/> -->
-        <input type="date" id="date" name="date" th:attr="value=${current_date}" placeholder="Insert date name" readonly="readonly"/><br/>
-        <textarea name="description" th:field="*{description}" maxlength="500" placeholder="Insert description"></textarea><br/>
-        <div >
-        <input type="hidden" id="user" name="user" th:attr="value=${myId}" />
+<h2 style="text-align: center">Create post</h2>
+        <div class="myForm">
+            <form th:object="${post}" th:action="@{save}" action="#" method="post">
+                <div class="inputGroup">
+                <input type="text" th:field="*{title}" placeholder="Insert title name"/><br/>
+                </div>
+               <!-- <input type="text" th:field="*{author}" placeholder="Insert author name"/><br/> -->
+                <div class="inputGroup">
+                <input type="text" id="date" name="date" th:attr="value=${current_date}" placeholder="Insert date name" readonly="readonly"/><br/>
+                </div>
+                <textarea name="description" th:field="*{description}" maxlength="500" placeholder="Insert description"></textarea><br/>
+                <div >
+                <input type="hidden" id="user" name="user" th:attr="value=${myId}" />
+                </div>
+                <button type="submit" class="button1">Create post</button>
+            </form>
         </div>
-        <button type="submit">Create post</button>
-    </form>
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>

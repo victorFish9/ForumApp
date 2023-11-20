@@ -8,15 +8,13 @@
 <body>
 <header th:insert="blocks/header :: header" ></header>
   <h2>Welcome to feed page</h2>
-<div>
-  <p>Your id is <span th:text="${myId}"></span></p>
-</div>
 
-<h2>Posts</h2>
+
+<h2 style="text-align: center">Articles</h2>
 <main class="main_feed">
   <div th:each="x : ${posts}" class="card">
     <h3 th:text="${x.title}"></h3>
-    <p th:text="${#dates.format(x.date, 'dd.MM.yyyy')}"></p>
+    <p th:text="${x.date}"></p>
     <p th:text="${x.user.username}"></p>
     <a th:href="@{/show/{id}(id=${x.id})}" >Read more</a>
 

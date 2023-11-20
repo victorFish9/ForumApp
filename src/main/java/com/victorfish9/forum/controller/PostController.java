@@ -61,6 +61,7 @@ public class PostController {
 
         model.addAttribute("posts", posts);
         model.addAttribute("myId", myUser.getId());
+        model.addAttribute("myUser", myUser.getUsername());
         return "feed";
     }
 
