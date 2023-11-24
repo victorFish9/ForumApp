@@ -1,0 +1,161 @@
+body, html{
+    margin: 10px;
+    padding: 15px;
+
+    font-family: Verdana, Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer{
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar nav{
+    display: flex;
+    align-items: center;
+}
+.navbar a {
+    padding: 10px;
+}
+
+main{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_feed{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 190px;
+    height: 254px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+    -15px -15px 30px #ffffff;
+    padding: 10px;
+    margin: 30px;
+}
+.card h3 p{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.button1, .button2 {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    color: #111827;
+
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .45rem 1rem;
+    text-align: center;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.button2:hover {
+    background-color: #de7b7b;
+}
+.button1:hover {
+    background-color: #3db22e;
+}
+
+.button1:focus, .button2:focus {
+    outline: 2px solid rgba(0,0,0,0.1);
+    outline-offset: 2px;
+}
+
+.button1:focus-visible, .button2:focus-visible {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.post{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.myForm{
+    display: flex;
+
+    justify-content: space-around;
+}
+.myForm input, textarea, button{
+    margin: 10px;
+}
+
+.inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    max-width: 190px;
+    position: relative;
+}
+
+.inputGroup input {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.inputGroup label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: white;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
+}
+.divButton{
+    display: flex;
+    justify-content: center;
+}
+
+
+

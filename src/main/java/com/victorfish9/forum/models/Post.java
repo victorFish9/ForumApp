@@ -1,5 +1,6 @@
 package com.victorfish9.forum.models;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -9,9 +10,12 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank(message = "Title is mandatory")
     private String title;
     //private String author;
     @Column(name = "description", length = 500)
+    @NotBlank(message = "Description is mandatory")
     private String description;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")

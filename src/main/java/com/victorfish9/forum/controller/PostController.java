@@ -38,6 +38,7 @@ public class PostController {
         System.out.println("Date:" + dft.format(now));
 
         model.addAttribute("current_date", dft.format(now));
+        model.addAttribute("myUser", myUser.getUsername());
         model.addAttribute("myId", myUser.getId());
         model.addAttribute("post", new Post());
         return "add";

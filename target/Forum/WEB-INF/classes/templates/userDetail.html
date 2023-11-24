@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user detail</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header" ></header>
+    <h2>Welcome to user information page</h2>
+<div th:each="x : ${users}" >
+    <p>Username:<span th:text="${x.username}"></span></p>
+    <p>Role: <span th:text="${x.role}"></span></p>
+</div>
+</body>
+</html>

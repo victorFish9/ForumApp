@@ -11,7 +11,7 @@
     <groupId>com.victorfish9</groupId>
     <artifactId>Forum</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>Forum</name>
     <description>Forum</description>
     <properties>
