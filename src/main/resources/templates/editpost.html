@@ -7,18 +7,25 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<h2>Edit your post</h2>
+<h2 style="text-align: center">Edit your post</h2>
+<div class="myForm">
 <form th:object="${post}" th:action="@{/home/save}" action="#" method="post">
     <input type="hidden" th:field="*{id}" />
     <label>Title</label>
+    <div class="inputGroup">
     <input type="text" th:field="*{title}" />
+    </div>
     <label>Description</label>
-    <textarea name="description" th:field="*{description}"></textarea>
+    <div class="inputGroup">
+    <textarea name="description" th:field="*{description}"></textarea><br>
+    </div>
     <label>Date</label>
+    <div class="inputGroup">
     <input type="date" id="date" name="date" th:attr="value=${current_date}" readonly="readonly" />
-
+    </div>
     <input type="hidden" id="user" name="user" th:field="*{user.id}" />
-    <input type="submit" value="Save" />
+    <button type="submit" class="button1">Submit</button>
 </form>
+</div>
 </body>
 </html>

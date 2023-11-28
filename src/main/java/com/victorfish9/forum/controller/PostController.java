@@ -5,8 +5,6 @@ import com.victorfish9.forum.models.User;
 import com.victorfish9.forum.repository.PostRepository;
 import com.victorfish9.forum.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -26,7 +24,7 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @RequestMapping("/home/add")
+    @RequestMapping(value = "/home/add", method = RequestMethod.GET)
     public String postAdd(Model model){
         //User methods for getting current user_id
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -41,6 +39,7 @@ public class PostController {
         model.addAttribute("myUser", myUser.getUsername());
         model.addAttribute("myId", myUser.getId());
         model.addAttribute("post", new Post());
+
         return "add";
     }
 
@@ -104,6 +103,10 @@ public class PostController {
         Optional<User> user = userRepository.findById(id);
         ArrayList<User> res = new ArrayList<>();
         user.ifPresent(res :: add);
+        UserDetails user2 = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user2.getUsername();
+        User myUser = userRepository.findByUsername(username);
+        model.addAttribute("myUser", myUser.getUsername());
         model.addAttribute("users", res);
         return "userDetail";
     }

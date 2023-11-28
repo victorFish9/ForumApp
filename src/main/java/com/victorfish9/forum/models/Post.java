@@ -2,6 +2,7 @@ package com.victorfish9.forum.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Date;
 
@@ -24,8 +25,7 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    public Post() {
-    }
+
 
     public Post(String title, /*String author,*/ Date date, String description, User user) {
 
@@ -34,6 +34,10 @@ public class Post {
         this.date = date;
         this.description = description;
         this.user = user;
+    }
+
+    public Post() {
+
     }
 
     public User getUser() {

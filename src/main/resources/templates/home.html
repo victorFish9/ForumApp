@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home.</title>
     <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
     <header th:insert="blocks/header :: header" ></header>
-    <h2>Home page</h2>
+    <h2>Home page. Here you can see 3 latest posts from database</h2>
     <h2 style="text-align: center">Latest Articles</h2>
     <main>
+        <div th:if="${latestPosts.isEmpty()}">No data</div>
+        <div th:unless="${latestPosts.isEmpty()}">
     <div th:each="x : ${latestPosts}" class="card">
         <h3 th:text="${x.title}"></h3>
         <p th:text="${x.date}"></p>
@@ -21,6 +23,7 @@
         <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/edit/{id}(id=${x.id})}">Edit</a></p>
         <p th:unless="${x.user.id == myId or myId == 1}">You cant edit</p>
     </div>
+        </div>
     </main>
 
 <footer th:insert="blocks/footer :: footer"></footer>

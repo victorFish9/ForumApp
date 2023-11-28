@@ -2,16 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>feed</title>
+    <title>Feed</title>
   <link type="text/css" rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
 <header th:insert="blocks/header :: header" ></header>
-  <h2>Welcome to feed page</h2>
+  <h2>Welcome to feed page. Here you can see all posts from database</h2>
 
 
 <h2 style="text-align: center">Articles</h2>
 <main class="main_feed">
+    <div th:if="${posts.isEmpty()}">No data</div>
+  <div th:unless="${posts.isEmpty()}">
   <div th:each="x : ${posts}" class="card">
     <h3 th:text="${x.title}"></h3>
     <p th:text="${x.date}"></p>
@@ -24,7 +26,7 @@
     <p th:if="${x.user.id == myId or myId == 1}"><a th:href="@{/edit/{id}(id=${x.id})}">Edit</a></p>
     <p th:unless="${x.user.id == myId or myId == 1}">You cant edit</p>
   </div>
-
+  </div>
 </main>
 
 

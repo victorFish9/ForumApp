@@ -28,10 +28,11 @@ public class MainController {
     private UserRepository userRepository;
     @GetMapping("/home")
     public String home(Model model){
+        //last 3 post
         List<Post> allPosts = (List<Post>) postRepository.findAll();
         List<Post> latestPosts = allPosts.subList(Math.max(0, allPosts.size() - 3), allPosts.size());
         Collections.sort(latestPosts, Collections.reverseOrder(Comparator.comparing(Post::getDate)));
-
+        //user details for navbar
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
         User myUser = userRepository.findByUsername(username);
